@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model List<EShopAdminApplication.Models.Order>
+
+<div class="container">
+
+
+    <table class="table mt-5">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Costumer Details</th>
+                <th scope="col">Number of products</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+
+                <tr>
+                    <th scope="row">@(i+1)</th>
+                    <td>@item.User.Email - @item.User.FirstName  @item.User.LastName</td>
+                    <td>@item.ProductInOrders.Count()</td>
+                    <td><a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a></td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+
+</div>
